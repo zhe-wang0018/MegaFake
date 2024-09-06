@@ -21,8 +21,8 @@ We did some preprocessing:
 
 | version |     feature      | legitimate | fake | total |
 |:-------:|:----------------:|:----------:|:----:|:-----:|
-|   v1    |  having 鈥渢ext鈥?   |   14991    | 4717 | 19708 |
-|   v2    |  having 鈥渢itle鈥?  |   14928    | 4706 | 19634 |
+|   v1    |  having "text"   |   14991    | 4717 | 19708 |
+|   v2    |  having "title"  |   14928    | 4706 | 19634 |
 |   v3    | in proper length |   11945    | 3784 | 15729 |
 
 We use v3 to do further processing.
