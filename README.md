@@ -4,7 +4,9 @@
 
 [Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, Yiming MA<sup>1</sup>, Renfei GAO<sup>1</sup>, Beichen GUO<sup>1</sup>, Han ZHU<sup>1</sup>, [Wenqi FAN](https://wenqifan03.github.io/)<sup>1,\*</sup>, Zexin LU<sup>1,\*</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>
 
-<sup align="center">1</sup>The Hong Kong Polytechnic University
+<sup>1</sup>The Hong Kong Polytechnic University
+
+---
 
 <p align="center">
     <img src="/final_v2.png">
