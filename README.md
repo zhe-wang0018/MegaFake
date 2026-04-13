@@ -2,7 +2,7 @@
 
 [Paper](https://www.arxiv.org/abs/2408.11871) | [Dataset Request Form](https://forms.office.com/r/3DsdcYW1Sr)
 
-A comprehensive collection of AI-generated fake and legitimate news texts created by ChatGLM and LLaMA3 models, covering GossipCop and PolitiFact data sources with multiple generation strategies.
+A comprehensive collection of AI-generated fake and legitimate news texts created by ChatGLM and LLaMA3 models, covering GossipCop and PolitiFact data sources with multiple generation strategies. The dataset is available upon request, please fulfill the dataset request form and send an email to lionel-z.wang@connect.polyu.hk
 
 [Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>, Yiming MA<sup>2</sup>, [Wenqi FAN](https://wenqifan03.github.io/)<sup>1</sup>, 
 
