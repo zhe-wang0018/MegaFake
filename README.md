@@ -2,9 +2,12 @@
 
 [Paper](https://www.arxiv.org/abs/2408.11871) | [Dataset Request Form](https://forms.office.com/r/3DsdcYW1Sr)
 
-[Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, Yiming MA<sup>1</sup>, Renfei GAO<sup>1</sup>, Beichen GUO<sup>1</sup>, Han ZHU<sup>1</sup>, Zexin LU<sup>1,\*</sup>, [Wenqi FAN](https://wenqifan03.github.io/)<sup>1,\*</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>
+A comprehensive collection of AI-generated fake and legitimate news texts created by ChatGLM and LLaMA3 models, covering GossipCop and PolitiFact data sources with multiple generation strategies.
+
+[Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>, Yiming MA<sup>2</sup>, Renfei GAO<sup>1</sup>, [Wenqi FAN](https://wenqifan03.github.io/)<sup>1,\*</sup>, 
 
 <sup>1</sup>The Hong Kong Polytechnic University<br>
+<sup>1</sup>Harbin Institute of Technology<br>
 <sup>\*</sup>corresponding author
 
 ---
