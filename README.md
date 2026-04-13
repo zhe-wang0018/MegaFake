@@ -13,7 +13,7 @@ A comprehensive collection of AI-generated fake and legitimate news texts create
 ---
 
 <p align="center">
-    <img src="/final_v2.png">
+    <img src="/Final_framework.png">
 </p>
 
 :star: If MegaFake is helpful for your research, please help star this repo. Thanks!:hugs:
