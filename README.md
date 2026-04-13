@@ -4,7 +4,7 @@
 
 A comprehensive collection of AI-generated fake and legitimate news texts created by ChatGLM and LLaMA3 models, covering GossipCop and PolitiFact data sources with multiple generation strategies.
 
-[Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>, Yiming MA<sup>2</sup>,[Wenqi FAN](https://wenqifan03.github.io/)<sup>1,\*</sup>, 
+[Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>, Yiming MA<sup>2</sup>, [Wenqi FAN](https://wenqifan03.github.io/)<sup>1</sup>, 
 
 <sup>1</sup>The Hong Kong Polytechnic University<br>
 <sup>1</sup>Harbin Institute of Technology<br>
@@ -54,22 +54,14 @@ We designed 6 ways to generate news.
 - [Style-based Legitimate](#style-based-legitimate)
 - [Integration-based Legitimate](#integration-based-legitimate)
 
-Except for task "Content-based Fake", which uses [GLM4](https://www.chatglm.cn/) for generation, all other tasks use [ChatGLM3](https://github.com/THUDM/ChatGLM3).
+### Dataset Statistics
 
-The statistics for each task:
-
-| Task Name                    | Total  |
-| ---------------------------- |:------:|
-| Style-based Fake             | 15729  |
-| Content-based Fake           | 11941  |
-| Integration-based Fake       |  2697  |
-| Story-based Fake             | 15729  |
-| Style-based Legitimate       | 11945  |
-| Integration-based Legitimate |  5926  | 
+- **Total Samples**: ~170,000 generated texts
+- **Models**: ChatGLM, LLaMA3
+- **Domains**: GossipCop (celebrity news), PolitiFact (political news)
+- **Generation Types**: Style-based, Content-based, Integration-based, Story-based
 
 ## Style-based Fake
-
-Filename: megafake-1_style_based_fake.json
 
 Prompt:
 
@@ -117,8 +109,6 @@ Example 2:
 
 ## Content-based Fake
 
-Filename: megafake-2_content_based_fake.json
-
 Prompt:
 
 For human-generated **legitimate** news as inputs:
@@ -141,8 +131,6 @@ Exmple:
 ```
 
 ## Integration-based Fake
-
-Filename: megafake-3_integration_based_fake_tn200.json
 
 use [Neural Topic Model](https://github.com/zll17/Neural_Topic_Models) to extract hidden topics, and then construct topic-related document pairs to integrate.
 
@@ -175,8 +163,6 @@ Example:
 
 ## Story-based Fake
 
-Filename: megafake-4_story_based_fake.json
-
 Prompt:
 
 For both human-generated **fake** and **legitimate** news as inputs:
@@ -201,8 +187,6 @@ Example:
 
 ## Style-based Legitimate
 
-Filename: megafake-5_style_based_legitimate.json
-
 Prompt:
 
 For human-generated **legitimate** news as inputs:
@@ -226,8 +210,6 @@ Example:
 ```
 
 ## Integration-based Legitimate
-
-Filename: megafake-7_integration_based_legitimate_tn300.json
 
 Prompt:
 
