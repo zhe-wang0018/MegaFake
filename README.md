@@ -22,8 +22,8 @@ A comprehensive collection of AI-generated fake and legitimate news texts create
 ## :book: Table of Contents
 
 - [Overview](#-overview)
-- [Original Data Sources](#-data-source)
-- [Style-based Fake](#style-based-fake)
+- [Original Data Sources](#-original-data-source)
+-- [Style-based Fake](#style-based-fake)
 - [Content-based Fake](#content-based-fake)
 - [Integration-based Fake](#integration-based-fake)
 - [Story-based Fake](#story-based-fake)
