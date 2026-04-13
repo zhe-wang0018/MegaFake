@@ -4,7 +4,7 @@
 
 A comprehensive collection of AI-generated fake and legitimate news texts created by ChatGLM and LLaMA3 models, covering GossipCop and PolitiFact data sources with multiple generation strategies.
 
-[Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>, Yiming MA<sup>2</sup>, Renfei GAO<sup>1</sup>, [Wenqi FAN](https://wenqifan03.github.io/)<sup>1,\*</sup>, 
+[Lionel Z. WANG](https://zhe-wang0018.github.io/)<sup>1</sup>, [Ka Chung NG](https://polyu-mm-boris-ng.github.io/)<sup>1,\*</sup>, Yiming MA<sup>2</sup>,[Wenqi FAN](https://wenqifan03.github.io/)<sup>1,\*</sup>, 
 
 <sup>1</sup>The Hong Kong Polytechnic University<br>
 <sup>1</sup>Harbin Institute of Technology<br>
@@ -21,7 +21,7 @@ A comprehensive collection of AI-generated fake and legitimate news texts create
 
 ## :book: Table of Contents
 
-- [Introduction](#introduction)
+- [Overview](#-overview)
 - [Style-based Fake](#style-based-fake)
 - [Content-based Fake](#content-based-fake)
 - [Integration-based Fake](#integration-based-fake)
@@ -31,9 +31,9 @@ A comprehensive collection of AI-generated fake and legitimate news texts create
 - [License](#license)
 - [Metadata](#metadata)
 
-## Introduction
+## 🔍 Overview
 
-Our dataset is based on GossipCop, which is proposed by FakeNewsNet([ArXiv](https://arxiv.org/abs/1809.01286))([Github](https://github.com/KaiDMML/FakeNewsNet))
+The MegaFake dataset contains AI-generated news texts from two large language models (ChatGLM and LLaMA3) across two news domains (GossipCop and PolitiFact). The dataset includes six different generation strategies for creating both fake and legitimate news content.
 
 We did some preprocessing:
 
