@@ -23,18 +23,17 @@ A comprehensive collection of AI-generated fake and legitimate news texts create
 
 - [Overview](#-overview)
 - [Original Data Sources](#-original-data-source)
--- [Style-based Fake](#style-based-fake)
-- [Content-based Fake](#content-based-fake)
-- [Integration-based Fake](#integration-based-fake)
-- [Story-based Fake](#story-based-fake)
-- [Style-based Legitimate](#style-based-legitimate)
-- [Integration-based Legitimate](#integration-based-legitimate)
+- [Fake News Types](#-fake-news-types)
 - [Dataset Structure](#-dataset-structure)
 - [Key Findings](#-key-findings)
 - [JSON Structure Details](%EF%B8%8F-json-structure-details)
 - [Language Feature Analysis](#-language-feature-analysis)
+- [Appendix](#appendix)
+- [Usage Guidelines](#-usage-guidelines)
 - [License](#license)
 - [Metadata](#metadata)
+
+---
 
 ## 🔍 Overview
 
@@ -65,6 +64,8 @@ We designed 6 ways to generate news.
 - **Models**: ChatGLM, LLaMA3
 - **Domains**: GossipCop (celebrity news), PolitiFact (political news)
 - **Generation Types**: Style-based, Content-based, Integration-based, Story-based
+
+---
 
 ## 📁 Original Data Sources
 
@@ -151,6 +152,10 @@ These original files were processed and transformed to create the various MegaFa
 2. Standardizing label formats (fake/real → 0/1)
 3. Creating balanced datasets for training and evaluation
 4. Generating different subsets for various experimental tasks
+
+---
+
+## Fake News Types
 
 ### Style-based Fake
 
@@ -346,6 +351,539 @@ Example:
 }
 ```
 
+---
+
+## 📊 Dataset Structure
+
+### 🌟 Key Findings
+
+- **glm_gossip** dataset has a unique `megafake-XXX` outer wrapper structure
+- **Other datasets** (glm_polifact, llama3_gossip, llama3_polifact) use direct list structure
+
+---
+
+## 🗂️ JSON Structure Details
+
+### 1. glm_gossip Dataset Structure
+
+### 📁 megafake-1_style_based_fake.json
+
+```
+📋 Array[15,729 items]
+├── 📁 Object
+│   └── 🔑 "megafake-2493749932"
+│       ├── 📄 "origin_id": "megafake-2493749932"
+│       ├── 📄 "origin_label": "fake"
+│       ├── 📄 "origin_text": "Long text content..."
+│       ├── 📄 "generated_text": "Generated text content..."
+│       ├── 📄 "generated_tone": "an objective and professional tone"
+│       └── 📄 "generated_label": "fake"
+├── 📁 Object
+│   └── 🔑 "megafake-4580247171"
+│       ├── 📄 "origin_id": "megafake-4580247171"
+│       ├── 📄 "origin_label": "fake"
+│       ├── 📄 "origin_text": "Long text content..."
+│       ├── 📄 "generated_text": "Generated text content..."
+│       ├── 📄 "generated_tone": "a neutral tone"
+│       └── 📄 "generated_label": "fake"
+└── ... (continues with 15,727 similar structures)
+```
+
+### 📁 megafake-2_content_based_fake.json
+
+```
+📋 Array[11,945 items]
+├── 📁 Object
+│   └── 🔑 "megafake-XXX"
+│       ├── 📄 "origin_id": "megafake-XXX"
+│       ├── 📄 "origin_label": "fake/real"
+│       ├── 📄 "origin_text": "Long text content..."
+│       └── 📄 "generated_text_glm4": "GLM4 generated text content..."
+└── ... (continues with 11,944 similar structures)
+```
+
+### 📁 megafake-3_integration_based_fake.json
+
+```
+📋 Array[3,000 items]
+├── 📁 Object
+│   └── 🔑 "megafake-XXX"
+│       ├── 📄 "doc_1_id": "news_0"
+│       ├── 📄 "doc_1_label": "fake"
+│       ├── 📄 "doc_1_text": "First document content..."
+│       ├── 📄 "doc_2_id": "news_1"
+│       ├── 📄 "doc_2_label": "real"
+│       ├── 📄 "doc_2_text": "Second document content..."
+│       └── 📄 "generated_text": "Integrated generated text content..."
+└── ... (continues with 2,999 similar structures)
+```
+
+### 📁 megafake-4_story_based_fake.json
+
+```
+📋 Array[15,729 items]
+├── 📁 Object
+│   └── 🔑 "megafake-XXX"
+│       ├── 📄 "origin_id": "megafake-XXX"
+│       ├── 📄 "origin_label": "fake/real"
+│       ├── 📄 "origin_text": "Long text content..."
+│       ├── 📄 "origin_title": "Original title"
+│       └── 📄 "generated_text": "Story-based generated text content..."
+└── ... (continues with 15,728 similar structures)
+```
+
+### 📁 megafake-5_style_based_legitimate.json
+
+```
+📋 Array[11,945 items]
+├── 📁 Object
+│   └── 🔑 "megafake-XXX"
+│       ├── 📄 "origin_id": "megafake-XXX"
+│       ├── 📄 "origin_label": "real"
+│       ├── 📄 "origin_text": "Long text content..."
+│       ├── 📄 "generated_label": "legitimate"
+│       └── 📄 "generated_text_t015": "Temperature 0.15 generated text content..."
+└── ... (continues with 11,944 similar structures)
+```
+
+### 📁 megafake-6_integration_based_legitimate.json
+
+```
+📋 Array[3,000 items]
+├── 📁 Object
+│   └── 🔑 "megafake-XXX"
+│       ├── 📄 "topic_id": "18"
+│       ├── 📋 "topic_words": ["Weinstein", "article", "Princess", ...]
+│       ├── 📄 "doc_1_id": "news_1"
+│       ├── 📄 "doc_1_label": "legitimate"
+│       ├── 📄 "doc_1_text": "First document content..."
+│       ├── 📄 "doc_2_id": "news_6"
+│       ├── 📄 "doc_2_label": "legitimate"
+│       ├── 📄 "doc_2_text": "Second document content..."
+│       ├── 📄 "generated_label": "legitimate"
+│       └── 📄 "generated_text_t01": "Temperature 0.1 generated text content..."
+└── ... (continues with 2,999 similar structures)
+```
+
+---
+
+### 2. glm_polifact Dataset Structure
+
+### 📁 megafake-1_style_based_fake.json
+
+```
+📋 Array[7,001 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_0"
+│   ├── 📄 "origin_label": "fake"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "generated_text": "Generated text content..."
+│   └── 📄 "generated_tone": "Tone description"
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_1"
+│   ├── 📄 "origin_label": "real"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "generated_text": "Generated text content..."
+│   └── 📄 "generated_tone": "Tone description"
+└── ... (continues with 6,999 similar structures)
+```
+
+### 📁 megafake-2_content_based_fake.json
+
+```
+📋 Array[2,445 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_1"
+│   ├── 📄 "origin_label": "real"
+│   ├── 📄 "origin_text": "Long text content..."
+│   └── 📄 "generated_text": "Generated text content..."
+└── ... (continues with 2,444 similar structures)
+```
+
+### 📁 megafake-3_integration_based_fake.json
+
+```
+📋 Array[2,000 items]
+├── 📁 Object
+│   ├── 📄 "doc_1_id": "news_0"
+│   ├── 📄 "doc_1_label": "fake"
+│   ├── 📄 "doc_1_text": "First document content..."
+│   ├── 📄 "doc_2_id": "news_1"
+│   ├── 📄 "doc_2_label": "real"
+│   ├── 📄 "doc_2_text": "Second document content..."
+│   └── 📄 "generated_text": "Integrated generated text content..."
+└── ... (continues with 1,999 similar structures)
+```
+
+### 📁 megafake-4_story_based_fake.json
+
+```
+📋 Array[7,001 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_0"
+│   ├── 📄 "origin_label": "fake"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "origin_title": "Original title"
+│   └── 📄 "generated_text": "Story-based generated text content..."
+└── ... (continues with 7,000 similar structures)
+```
+
+### 📁 megafake-5_style_based_legitimate.json
+
+```
+📋 Array[2,445 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_1"
+│   ├── 📄 "origin_label": "real"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "generated_label": "legitimate"
+│   └── 📄 "generated_text": "Generated text content..."
+└── ... (continues with 2,444 similar structures)
+```
+
+### 📁 megafake-6_integration_based_legitimate.json
+
+```
+📋 Array[2,000 items]
+├── 📁 Object
+│   ├── 📄 "doc_1_id": "news_1"
+│   ├── 📄 "doc_1_label": "legitimate"
+│   ├── 📄 "doc_1_text": "First document content..."
+│   ├── 📄 "doc_2_id": "news_6"
+│   ├── 📄 "doc_2_label": "legitimate"
+│   ├── 📄 "doc_2_text": "Second document content..."
+│   └── 📄 "generated_text": "Integrated generated text content..."
+└── ... (continues with 1,999 similar structures)
+```
+
+---
+
+### 3. llama3_gossip Dataset Structure
+
+### 📁 megafake-1_style_based_fake.json
+
+```
+📋 Array[15,729 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "gossipcop-2493749932"
+│   ├── 📄 "origin_label": "fake"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "generated_text": "Generated text content..."
+│   ├── 📄 "generated_tone": "a professional tone"
+│   └── 📄 "generated_label": "fake"
+└── ... (continues with 15,728 similar structures)
+```
+
+### 📁 megafake-2_content_based_fake.json
+
+```
+📋 Array[11,945 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "gossipcop-875924"
+│   ├── 📄 "origin_label": "real"
+│   ├── 📄 "origin_text": "Long text content..."
+│   └── 📄 "generated_text": "Generated text content..."
+└── ... (continues with 11,944 similar structures)
+```
+
+### 📁 megafake-3_integration_based_fake.json
+
+```
+📋 Array[3,000 items]
+├── 📁 Object
+│   ├── 📄 "doc_1_id": "gossipcop-2493749932"
+│   ├── 📄 "doc_1_label": "fake"
+│   ├── 📄 "doc_1_text": "First document content..."
+│   ├── 📄 "doc_2_id": "gossipcop-875924"
+│   ├── 📄 "doc_2_label": "real"
+│   ├── 📄 "doc_2_text": "Second document content..."
+│   └── 📄 "generated_text": "Integrated generated text content..."
+└── ... (continues with 2,999 similar structures)
+```
+
+### 📁 megafake-4_story_based_fake.json
+
+```
+📋 Array[15,729 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "gossipcop-2493749932"
+│   ├── 📄 "origin_label": "fake"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "origin_title": "Original title"
+│   └── 📄 "generated_text": "Story-based generated text content..."
+└── ... (continues with 15,728 similar structures)
+```
+
+### 📁 megafake-5_style_based_legitimate.json
+
+```
+📋 Array[11,945 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "gossipcop-875924"
+│   ├── 📄 "origin_label": "real"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "generated_label": "legitimate"
+│   └── 📄 "generated_text": "Generated text content..."
+└── ... (continues with 11,944 similar structures)
+```
+
+### 📁 megafake-6_integration_based_legitimate.json
+
+```
+📋 Array[3,000 items]
+├── 📁 Object
+│   ├── 📄 "topic_id": "18"
+│   ├── 📋 "topic_words": ["Weinstein", "article", "Princess", ...]
+│   ├── 📄 "doc_1_id": "gossipcop-875924"
+│   ├── 📄 "doc_1_label": "real"
+│   ├── 📄 "doc_1_text": "First document content..."
+│   ├── 📄 "doc_2_id": "gossipcop-857248"
+│   ├── 📄 "doc_2_label": "real"
+│   ├── 📄 "doc_2_text": "Second document content..."
+│   └── 📄 "generated_text": "Integrated generated text content..."
+└── ... (continues with 2,999 similar structures)
+```
+
+---
+
+### 4. llama3_polifact Dataset Structure
+
+### 📁 megafake-1_style_based_fake.json
+
+```
+📋 Array[7,001 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_0"
+│   ├── 📄 "origin_label": "fake"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "generated_text": "Generated text content..."
+│   └── 📄 "generated_tone": "Tone description"
+└── ... (continues with 7,000 similar structures)
+```
+
+### 📁 megafake-2_content_based_fake.json
+
+```
+📋 Array[2,445 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_1"
+│   ├── 📄 "origin_label": "real"
+│   ├── 📄 "origin_text": "Long text content..."
+│   └── 📄 "generated_text": "Generated text content..."
+└── ... (continues with 2,444 similar structures)
+```
+
+### 📁 megafake-3_integration_based_fake.json
+
+```
+📋 Array[2,000 items]
+├── 📁 Object
+│   ├── 📄 "doc_1_id": "news_0"
+│   ├── 📄 "doc_1_label": "fake"
+│   ├── 📄 "doc_1_text": "First document content..."
+│   ├── 📄 "doc_2_id": "news_1"
+│   ├── 📄 "doc_2_label": "real"
+│   ├── 📄 "doc_2_text": "Second document content..."
+│   └── 📄 "generated_text": "Integrated generated text content..."
+└── ... (continues with 1,999 similar structures)
+```
+
+### 📁 megafake-4_story_based_fake.json
+
+```
+📋 Array[7,001 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_0"
+│   ├── 📄 "origin_label": "fake"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "origin_title": "Original title"
+│   └── 📄 "generated_text": "Story-based generated text content..."
+└── ... (continues with 7,000 similar structures)
+```
+
+### 📁 megafake-5_style_based_legitimate.json
+
+```
+📋 Array[2,445 items]
+├── 📁 Object
+│   ├── 📄 "origin_id": "news_1"
+│   ├── 📄 "origin_label": "real"
+│   ├── 📄 "origin_text": "Long text content..."
+│   ├── 📄 "generated_label": "legitimate"
+│   └── 📄 "generated_text": "Generated text content..."
+└── ... (continues with 2,444 similar structures)
+```
+
+### 📁 megafake-6_integration_based_legitimate.json
+
+```
+📋 Array[2,000 items]
+├── 📁 Object
+│   ├── 📄 "doc_1_id": "news_1"
+│   ├── 📄 "doc_1_label": "legitimate"
+│   ├── 📄 "doc_1_text": "First document content..."
+│   ├── 📄 "doc_2_id": "news_6"
+│   ├── 📄 "doc_2_label": "legitimate"
+│   ├── 📄 "doc_2_text": "Second document content..."
+│   └── 📄 "generated_text": "Integrated generated text content..."
+└── ... (continues with 1,999 similar structures)
+```
+
+---
+
+## 🔑 Key Field Descriptions
+
+### Basic Fields
+
+- **origin_id**: Unique identifier for the original text
+- **origin_label**: Label of the original text (fake/real/legitimate)
+- **origin_text**: Original text content
+- **origin_title**: Original text title (story_based files only)
+
+### Generated Text Fields
+
+- **generated_text**: Standard generated text
+- **generated_text_glm4**: Text generated by GLM4 model
+- **generated_text_t015**: Text generated with temperature parameter 0.15
+- **generated_text_t01**: Text generated with temperature parameter 0.1
+
+### Special Fields
+
+- **generated_tone**: Tone description of generated text
+- **generated_label**: Label of generated text
+- **doc_1_***: Information related to the first document
+- **doc_2_***: Information related to the second document
+- **topic_id**: Topic ID
+- **topic_words**: Array of topic keywords
+
+---
+
+## 📊 Structure Comparison Summary
+
+| Dataset         | Structure Type    | Outer Wrapper | Special Field Variants  |
+| --------------- | ----------------- | ------------- | ----------------------- |
+| glm_gossip      | Wrapper Structure | megafake-XXX  | 4 generated text fields |
+| glm_polifact    | Direct Structure  | None          | generated_text only     |
+| llama3_gossip   | Direct Structure  | None          | generated_text only     |
+| llama3_polifact | Direct Structure  | None          | generated_text only     |
+
+**Key Difference**: Only the `glm_gossip` dataset uses the `megafake-XXX` outer wrapper structure, while other datasets use direct object array structure.
+
+---
+
+## 📈 Language Feature Analysis
+
+### Cross-Model Language Feature Comparison Results
+
+#### ChatGLM - GossipCop Dataset
+
+| News Type                      | Samples | Sent Count | Word Count | Sent Len (Words) | Sent Len (Chars) | Word Len | Compound | Compound Std | Positive | Negative | Neutral |
+| ------------------------------ | ------- | ---------- | ---------- | ---------------- | ---------------- | -------- | -------- | ------------ | -------- | -------- | ------- |
+| Style-Based (Fake)             | 15729   | 12.68      | 291.19     | 22.96            | 113.70           | 4.16     | 0.58     | 0.68         | 0.14     | 0.06     | 0.81    |
+| Content-Based (Fake)           | 11941   | 17.38      | 398.24     | 22.91            | 115.25           | 4.27     | 0.71     | 0.58         | 0.13     | 0.04     | 0.83    |
+| Integration-Based (Fake)       | 2697    | 12.35      | 308.08     | 24.95            | 126.63           | 4.27     | 0.55     | 0.68         | 0.11     | 0.05     | 0.84    |
+| Story-Based (Fake)             | 15421   | 10.04      | 227.31     | 22.64            | 113.75           | 4.22     | 0.64     | 0.63         | 0.15     | 0.05     | 0.80    |
+| Style-Based (Legitimate)       | 11945   | 9.83       | 229.95     | 23.38            | 118.26           | 4.27     | 0.52     | 0.67         | 0.11     | 0.05     | 0.84    |
+| Integration-Based (Legitimate) | 5926    | 10.40      | 263.48     | 25.33            | 129.09           | 4.29     | 0.54     | 0.70         | 0.12     | 0.05     | 0.83    |
+
+#### ChatGLM - PolitiFact Dataset
+
+| News Type                      | Samples | Sent Count | Word Count | Sent Len (Words) | Sent Len (Chars) | Word Len | Compound | Compound Std | Positive | Negative | Neutral |
+| ------------------------------ | ------- | ---------- | ---------- | ---------------- | ---------------- | -------- | -------- | ------------ | -------- | -------- | ------- |
+| Style-Based (Fake)             | 7001    | 22.14      | 588.28     | 26.57            | 147.88           | 4.76     | 0.05     | 0.88         | 0.08     | 0.08     | 0.84    |
+| Content-Based (Fake)           | 2445    | 32.06      | 744.13     | 23.21            | 127.08           | 4.69     | 0.45     | 0.79         | 0.08     | 0.05     | 0.87    |
+| Integration-Based (Fake)       | 2000    | 15.50      | 455.34     | 29.38            | 168.44           | 4.91     | -0.05    | 0.84         | 0.08     | 0.08     | 0.84    |
+| Story-Based (Fake)             | 7001    | 11.03      | 310.88     | 28.18            | 164.92           | 5.01     | 0.54     | 0.68         | 0.12     | 0.06     | 0.83    |
+| Style-Based (Legitimate)       | 2445    | 22.43      | 614.17     | 27.38            | 154.83           | 4.85     | 0.32     | 0.82         | 0.07     | 0.05     | 0.88    |
+| Integration-Based (Legitimate) | 2000    | 18.38      | 569.80     | 30.99            | 177.29           | 4.90     | 0.26     | 0.84         | 0.08     | 0.07     | 0.85    |
+
+#### LLaMA3 - GossipCop Dataset
+
+| News Type                      | Samples | Sent Count | Word Count | Sent Len (Words) | Sent Len (Chars) | Word Len | Compound | Compound Std | Positive | Negative | Neutral |
+| ------------------------------ | ------- | ---------- | ---------- | ---------------- | ---------------- | -------- | -------- | ------------ | -------- | -------- | ------- |
+| Style-Based (Fake)             | 15729   | 14.53      | 359.08     | 24.71            | 123.57           | 4.21     | 0.49     | 0.78         | 0.15     | 0.07     | 0.78    |
+| Content-Based (Fake)           | 11945   | 18.81      | 472.27     | 25.10            | 121.09           | 4.04     | 0.65     | 0.65         | 0.12     | 0.05     | 0.83    |
+| Integration-Based (Fake)       | 3000    | 15.66      | 415.29     | 26.52            | 136.33           | 4.32     | 0.80     | 0.50         | 0.15     | 0.05     | 0.80    |
+| Story-Based (Fake)             | 15729   | 13.54      | 348.91     | 25.76            | 132.60           | 4.34     | 0.75     | 0.58         | 0.15     | 0.04     | 0.80    |
+| Style-Based (Legitimate)       | 11945   | 13.65      | 337.19     | 24.71            | 129.44           | 4.44     | 0.62     | 0.66         | 0.12     | 0.04     | 0.84    |
+| Integration-Based (Legitimate) | 3000    | 15.82      | 440.05     | 27.81            | 144.25           | 4.37     | 0.39     | 0.80         | 0.11     | 0.09     | 0.80    |
+
+#### LLaMA3 - PolitiFact Dataset
+
+| News Type                      | Samples | Sent Count | Word Count | Sent Len (Words) | Sent Len (Chars) | Word Len | Compound | Compound Std | Positive | Negative | Neutral |
+| ------------------------------ | ------- | ---------- | ---------- | ---------------- | ---------------- | -------- | -------- | ------------ | -------- | -------- | ------- |
+| Style-Based (Fake)             | 7001    | 16.03      | 407.18     | 25.41            | 138.07           | 4.61     | -0.05    | 0.85         | 0.08     | 0.08     | 0.84    |
+| Content-Based (Fake)           | 2445    | 32.49      | 774.30     | 23.83            | 122.90           | 4.37     | 0.35     | 0.85         | 0.08     | 0.06     | 0.86    |
+| Integration-Based (Fake)       | 2000    | 17.28      | 475.45     | 27.52            | 152.29           | 4.70     | 0.05     | 0.87         | 0.08     | 0.08     | 0.84    |
+| Story-Based (Fake)             | 7001    | 12.65      | 347.08     | 27.45            | 151.36           | 4.68     | 0.44     | 0.77         | 0.11     | 0.06     | 0.82    |
+| Style-Based (Legitimate)       | 2445    | 18.77      | 499.42     | 26.61            | 147.01           | 4.70     | 0.28     | 0.82         | 0.07     | 0.06     | 0.87    |
+| Integration-Based (Legitimate) | 2000    | 18.64      | 539.02     | 28.92            | 158.63           | 4.65     | 0.26     | 0.85         | 0.08     | 0.07     | 0.85    |
+
+## Methodology
+
+### Feature Extraction
+
+The linguistic features were computed using the following methods:
+
+#### Text Structure Features
+
+- **Sent Count**: Average number of sentences per text, computed using NLTK's sent_tokenize
+- **Word Count**: Average number of words per text, computed using NLTK's word_tokenize
+- **Sent Len (Words)**: Average sentence length in words, reflecting syntactic complexity
+- **Sent Len (Chars)**: Average sentence length in characters, reflecting expression density
+- **Word Len**: Average word length, reflecting lexical complexity
+
+#### Sentiment Features
+
+Computed using VADER (Valence Aware Dictionary and sEntiment Reasoner):
+
+- **Compound**: Overall sentiment score (-1 to +1, negative values indicate negative sentiment)
+- **Compound Std**: Standard deviation of compound scores, reflecting sentiment consistency
+- **Positive**: Positive sentiment intensity (0 to 1)
+- **Negative**: Negative sentiment intensity (0 to 1)
+- **Neutral**: Neutral sentiment intensity (0 to 1)
+
+### Data Processing
+
+Results were obtained by:
+
+1. Recursively extracting all entries with generated_text fields from JSON files
+2. Preprocessing texts by removing excessive whitespace
+3. Computing linguistic features for each sample
+4. Aggregating statistics by model, dataset, and news type
+
+## Appendix
+
+[check Appendix.md](./Appendix.md)
+
+---
+
+## 📖 Usage Guidelines
+
+### Data Loading
+
+Due to the structural differences between datasets, special attention is needed when loading the data:
+
+- **glm_gossip datasets**: Use wrapper structure extraction to handle the `megafake-XXX` outer keys
+- **Other datasets**: Direct array structure can be loaded normally
+- **Recommended approach**: Implement recursive extraction to handle all generated text field variants
+
+### Data Processing Recommendations
+
+1. **Text Preprocessing**: Remove excessive whitespace and normalize encoding
+2. **Quality Filtering**: Use perplexity and grammar scores to filter low-quality samples
+3. **Balanced Sampling**: Consider the varying sample sizes across generation types
+4. **Cross-validation**: Maintain model-dataset separation for evaluation
+
+### Evaluation Metrics
+
+- **Perplexity**: Use GPT-2 or similar language models
+- **Grammar**: LanguageTool or similar grammar checkers
+- **Diversity**: Type-Token Ratio (TTR) and other lexical diversity measures
+- **Coherence**: Entity-based coherence or semantic similarity measures
+
+---
+
 ## 📚 Citation
 
 If you use the MegaFake dataset in your research, please cite the relevant publication and acknowledge the dataset source.
@@ -365,13 +903,19 @@ abstract = {Fake news significantly influences decision-making processes by misl
 }
 ```
 
+---
+
 ## 📄 License
 
 The dataset is released under the Creative Commons Attribution 4.0 International License. lease refer to the LICENSE file for detailed terms and conditions.
 
+---
+
 ## Metadata
 
 Structured metadata for this dataset is available in the [croissant.json](./croissant.json) file.
+
+---
 
 ## Contact
 
