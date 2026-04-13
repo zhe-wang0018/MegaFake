@@ -22,12 +22,17 @@ A comprehensive collection of AI-generated fake and legitimate news texts create
 ## :book: Table of Contents
 
 - [Overview](#-overview)
+- [Original Data Sources](#-data-source)
 - [Style-based Fake](#style-based-fake)
 - [Content-based Fake](#content-based-fake)
 - [Integration-based Fake](#integration-based-fake)
 - [Story-based Fake](#story-based-fake)
 - [Style-based Legitimate](#style-based-legitimate)
 - [Integration-based Legitimate](#integration-based-legitimate)
+- [Dataset Structure](#-dataset-structure)
+- [Key Findings](#-key-findings)
+- [JSON Structure Details](%EF%B8%8F-json-structure-details)
+- [Language Feature Analysis](#-language-feature-analysis)
 - [License](#license)
 - [Metadata](#metadata)
 
@@ -61,7 +66,93 @@ We designed 6 ways to generate news.
 - **Domains**: GossipCop (celebrity news), PolitiFact (political news)
 - **Generation Types**: Style-based, Content-based, Integration-based, Story-based
 
-## Style-based Fake
+## 📁 Original Data Sources
+
+### original_glm_data Directory
+
+This directory contains the original source data files used to create the MegaFake dataset. These files represent the raw, unprocessed data that served as the foundation for generating the AI-generated news texts.
+
+#### 📄 gossipcop_v3_origin (1).json
+
+**Structure**: Dictionary format with GossipCop article IDs as keys
+
+- **Total Articles**: 14,256 articles
+- **Data Format**: `{article_id: article_data}`
+- **Article ID Pattern**: `gossipcop-{numeric_id}`
+
+**Field Descriptions**:
+
+- **url**: Original article URL
+- **text**: Full article text content
+- **images**: List of image URLs associated with the article
+- **top_img**: Main image URL for the article
+- **keywords**: List of extracted keywords from the article
+- **authors**: List of article authors
+- **canonical_link**: Canonical URL of the article
+- **title**: Article headline/title
+- **meta_data**: Additional metadata about the article
+- **movies**: Movie-related information (if applicable)
+- **publish_date**: Publication date of the article
+- **source**: News source/publication name
+- **summary**: Article summary/abstract
+- **id**: Unique article identifier
+- **label**: Truth label (`fake` or `real`)
+- **has_top_img**: Boolean indicating if article has a main image
+
+#### 📄 politifact.json
+
+**Structure**: JSON format with structured fact-checking data
+
+- **Total Records**: 19,422 fact-checking records
+- **Data Format**: JSON with metadata and data array
+- **Original Source**: Converted from `politifact.csv`
+
+**Field Descriptions**:
+
+- **sources**: Source of the claim (e.g., "Viral image", "Terry McAuliffe")
+- **sources_dates**: Date when the claim was made
+- **sources_post_location**: Location/context where claim was posted
+- **sources_quote**: The exact quote or claim being fact-checked
+- **curator_name**: Name of the fact-checker/curator
+- **curated_date**: Date when the fact-check was completed
+- **fact**: Truth rating (`true`, `false`, `pants-fire`, etc.)
+- **sources_url**: URL to the PolitiFact fact-check article
+- **curators_article_title**: Title of the fact-checking article
+- **curator_complete_article**: Full text of the fact-checking article
+- **curator_tags**: Tags/categories associated with the fact-check
+
+**JSON Structure**:
+
+```json
+{
+  "metadata": {
+    "source": "PolitiFact fact-checking dataset",
+    "total_records": 19422,
+    "conversion_date": "2025-07-15T23:56:32.599479",
+    "original_file": "politifact.csv",
+    "columns": [...]
+  },
+  "data": [
+    {
+      "sources": "Viral image",
+      "sources_dates": "2021-03-20 00:00:00",
+      "fact": "false",
+      ...
+    }
+  ]
+}
+```
+
+#### Data Usage
+
+These original files were processed and transformed to create the various MegaFake dataset variants found in other directories. The transformation process involved:
+
+1. Extracting relevant text content and labels
+2. Standardizing label formats (fake/real → 0/1)
+3. Creating balanced datasets for training and evaluation
+4. Generating different subsets for various experimental tasks
+
+### Style-based Fake
 
 Prompt:
 
@@ -107,7 +198,7 @@ Example 2:
 }
 ```
 
-## Content-based Fake
+### Content-based Fake
 
 Prompt:
 
@@ -130,7 +221,7 @@ Exmple:
 }
 ```
 
-## Integration-based Fake
+### Integration-based Fake
 
 use [Neural Topic Model](https://github.com/zll17/Neural_Topic_Models) to extract hidden topics, and then construct topic-related document pairs to integrate.
 
@@ -161,7 +252,7 @@ Example:
 }
 ```
 
-## Story-based Fake
+### Story-based Fake
 
 Prompt:
 
@@ -185,7 +276,7 @@ Example:
 }
 ```
 
-## Style-based Legitimate
+### Style-based Legitimate
 
 Prompt:
 
@@ -209,7 +300,7 @@ Example:
     }
 ```
 
-## Integration-based Legitimate
+### Integration-based Legitimate
 
 Prompt:
 
